@@ -1,0 +1,2 @@
+# Constants
+C = 1
