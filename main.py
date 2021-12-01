@@ -1,11 +1,11 @@
 import numpy as np
-from sptdiag import InertialFrame, SpacetimeDiagram
+from sptdiag import InertialFrame, SpaceTime
 from matplotlib import pyplot as plt
 
 
 def main():
     # Create a spacetime diagram
-    sptdiag = SpacetimeDiagram()
+    sptdiag = SpaceTime()
 
     # Create an inertial frame to transform to
     for i in np.linspace(-0.9, 0.9, 100):
