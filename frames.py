@@ -7,11 +7,12 @@ from .utils import lorentz_transformation, velocity_transformation
 class InertialFrame:
     def __init__(self, relative_velocity: float):
         """
-        Constructs a new frame with a given velocity relative to the inertial frame.
-        Expects relative velocity as a multiple of c, 
-        i.e. relative_velocity_in_mps = c * relative_velocity.
+        Constructs a new frame with a given velocity relative to the inertial
+        frame. Expects relative velocity as a multiple of c, i.e.
+        relative_velocity_in_mps = c * relative_velocity.
         """
-        self.relative_velocity = relative_velocity  # Velocity relative to the observer
+        # Velocity relative to the observer
+        self.relative_velocity = relative_velocity
 
         # Collection of data with shape (N, 2) with coordinates (t, x)
         self.data: List[np.ndarray] = []
@@ -51,7 +52,7 @@ class InertialFrame:
     def new_frame(self, relative_velocity: float) -> "InertialFrame":
         """
         Creates a new frame with a given velocity relative to this frame.
-        Expects relative velocity as a multiple of c, 
+        Expects relative velocity as a multiple of c,
         i.e. relative_velocity_in_mps = c * relative_velocity.
         """
         return InertialFrame(
@@ -62,9 +63,9 @@ class InertialFrame:
 class SpaceTime:
     """
     Represents a collection of frame with velocities relative to the observer
-    frame. Each frame has associated data from measurements it has taken. This 
+    frame. Each frame has associated data from measurements it has taken. This
     class provides methods to manipulate frames, transform the space-time diagram,
-    and produce plots of the measured data with respect to a specific observer.    
+    and produce plots of the measured data with respect to a specific observer.
     """
 
     def __init__(self):
@@ -89,9 +90,9 @@ class SpaceTime:
     def remove(self, idx: int):
         """
         Removes the inertial frame at the given index.
-        If the observer frame is removed, the spacetime diagram will 
-        transform to the next frame in the list. If there is only one 
-        frame, a `ValueError` is raised, as there is no frame to transform 
+        If the observer frame is removed, the spacetime diagram will
+        transform to the next frame in the list. If there is only one
+        frame, a `ValueError` is raised, as there is no frame to transform
         to.
         """
         if len(self.frames) == 1:
@@ -104,13 +105,14 @@ class SpaceTime:
 
     def transform(self, idx: int):
         """
-        Transforms the spacetime diagram to the frame of reference 
+        Transforms the spacetime diagram to the frame of reference
         associated with the given index.
         """
         # Get the velocity of the new frame of reference.
         vel = self.frames[idx].relative_velocity
         for i, frame in enumerate(self.frames):
-            # Transform data in each frame to the frame with relative velocity vel with respect to the current observer frame.
+            # Transform data in each frame to the frame with relative velocity vel
+            # with respect to the current observer frame.
             self.frames[i] = frame.to_frame(vel)
 
         # Swap to the new frame

@@ -1,5 +1,4 @@
 import numpy as np
-from numpy import linalg as lalg
 from .constants import C
 
 
