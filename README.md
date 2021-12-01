@@ -7,3 +7,5 @@ More information can be seen in the PDF that will soon be uploaded (haha nerds).
 so if you feel like taking a peek at what's going on under the hood, go for it!
 
 Note that this code only supports 1 spatial dimension and 1 time dimension for plotting as of now. Support for higher dimensions may be added in the future.
+
+The module used in this project is being expanded on over at <https://github.com/ArvinSKushwaha/sptdiag>.
